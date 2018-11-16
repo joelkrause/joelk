@@ -1,0 +1,70 @@
+body,
+html {
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+    margin: 0;
+    padding: 0;
+}
+
+@import url("https://use.typekit.net/pus7zdd.css");
+
+body {
+    font-family: $mainSans;
+    font-weight: 400;
+    font-size: 1em;
+    line-height: 1;
+}
+
+.container {
+    max-width: 1660px;
+    width: 80%;
+    padding: 0 2.5%;
+    margin: 0 auto;
+}
+
+.page--heading {
+    height: calc(75vh - 75px);
+    background: #232323;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    position: relative;
+
+    &:after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid #fff;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .wrapper {
+        width: 55vw;
+        margin: 0 auto;
+    }
+
+    h1 {
+        &.page--title {
+            font-family: $accentSans;
+            font-size: 70px;
+            margin: 0;
+        }
+    }
+
+    .avatar {
+        margin: 25px 0;
+    }
+
+    .date--posted {
+        margin: 0 0 5px;
+    }
+}

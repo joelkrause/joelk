@@ -1,0 +1,68 @@
+@import url("https://use.typekit.net/pus7zdd.css");
+body,
+html {
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  text-shadow: rgba(0, 0, 0, 0.01) 0 0 1px;
+  margin: 0;
+  padding: 0; }
+
+body {
+  font-family: "Inter UI", sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1; }
+
+.container {
+  max-width: 1660px;
+  width: 80%;
+  padding: 0 2.5%;
+  margin: 0 auto; }
+
+.page--heading {
+  height: calc(75vh - 75px);
+  background: #232323;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  position: relative; }
+  .page--heading:after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #fff;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%); }
+  .page--heading .wrapper {
+    width: 55vw;
+    margin: 0 auto; }
+  .page--heading h1.page--title {
+    font-family: "paralucent", sans-serif;
+    font-size: 70px;
+    margin: 0; }
+  .page--heading .avatar {
+    margin: 25px 0; }
+  .page--heading .date--posted {
+    margin: 0 0 5px; }
+
+header.site--header {
+  padding: 25px 50px;
+  background: #232323;
+  color: #fff; }
+  header.site--header .logo {
+    font-family: "paralucent", sans-serif;
+    font-weight: 700;
+    font-size: 22px; }

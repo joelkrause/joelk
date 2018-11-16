@@ -1,0 +1,13 @@
+header {
+    &.site--header {
+        padding: 25px 50px;
+        background: $primaryColor;
+        color: #fff;
+
+        .logo {
+            font-family: $accentSans;
+            font-weight: 700;
+            font-size: 22px;
+        }
+    }
+}
