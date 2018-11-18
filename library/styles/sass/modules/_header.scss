@@ -1,13 +1,51 @@
 header {
     &.site--header {
-        padding: 25px 50px;
-        background: $primaryColor;
+        background-color: $primaryColor;
+        padding: 50px;
         color: #fff;
+        display: flex;
+        align-items: center;
 
         .logo {
-            font-family: $accentSans;
+            font-family: $mainSans;
             font-weight: 700;
-            font-size: 22px;
+            font-size: 20px;
+            letter-spacing: 1px;
+
+            span {
+                font-style: italic;
+                font-weight: 100;
+                font-size: 20px;
+            }
+
+            a {
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+
+        .social--links {
+            flex-grow: 1;
+
+            ul,
+            li {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            ul {
+                display: flex;
+                justify-content: flex-end;
+
+                li {
+                    a {
+                        color: #fff;
+                        font-size: 20px;
+                        padding: 5px;
+                    }
+                }
+            }
         }
     }
 }
