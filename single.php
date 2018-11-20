@@ -6,7 +6,8 @@
             $post_tags = get_the_tags();
             if ($post_tags) {
               foreach($post_tags as $tag) {
-                echo '<span class="post--tag ' . $tag->slug . '">#' . $tag->name . '</span>';
+                $color = get_field('color',$tag);
+                echo '<span class="post--tag ' . $tag->slug . '" style="background-color:'.$color.';">#' . $tag->name . '</span>';
               }
             }
             ?>
