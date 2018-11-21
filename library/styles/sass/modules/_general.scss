@@ -9,8 +9,8 @@ html {
     padding: 0;
 }
 
-@import url('https://rsms.me/inter/inter-ui.css');
 @import url("https://use.typekit.net/pus7zdd.css");
+@import url('https://rsms.me/inter/inter-ui.css');
 
 * {
     box-sizing: border-box;
@@ -32,14 +32,15 @@ body {
 
 .container,
 .wrapper {
-    width: 55vw;
+    width: 50vw;
     margin: 0 auto;
 }
 
 .page--heading {
+    @include bg;
     min-height: 50vh;
-    padding: 17.5vh 0;
-    background-color: $primaryColor;
+    padding-top: calc(20vh + 115px);
+    padding-bottom: 20vh;
     display: flex;
     align-items: center;
     text-align: center;
@@ -63,7 +64,7 @@ body {
         &.page--title {
             font-family: $mainSans;
             font-weight: 700;
-            font-size: 52px;
+            font-size: 42px;
             margin: 25px 0 0;
         }
     }
@@ -81,7 +82,7 @@ body {
         span {
             &.post--tag {
                 font-weight: 700;
-                padding: 12px 12px 8px;
+                padding: 10px;
                 display: inline-block;
                 background: #111;
                 margin: 0 5px;

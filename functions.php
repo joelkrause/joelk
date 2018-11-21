@@ -25,8 +25,7 @@ if ( ! function_exists( 'joelkrause' ) ) :
 		 * Add support for two custom navigation menus.
 		 */
 		register_nav_menus( array(
-			'primary'   => __( 'Primary Menu', 'joelkrause' ),
-			'secondary' => __('Secondary Menu', 'joelkrause' )
+			'main-nav'   => __( 'Main Navigation', 'joelkrause' ),
 		) );
 	 
 		/**

@@ -1,16 +1,19 @@
 header {
     &.site--header {
-        background-color: $primaryColor;
-        padding: 50px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1;
+        padding: 25px;
         color: #fff;
         display: flex;
         align-items: center;
 
         .logo {
-            font-family: $mainSans;
-            font-weight: 700;
-            font-size: 20px;
-            letter-spacing: 1px;
+            font-family: "hwt-mardell", sans-serif;
+            font-weight: 400;
+            font-size: 32px;
 
             span {
                 font-style: italic;
@@ -24,8 +27,56 @@ header {
             }
         }
 
+        nav {
+            &.site--nav {
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                font-weight: 500;
+
+                ul,
+                li {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                ul {
+                    display: flex;
+
+                    li {
+                        a {
+                            color: #fff;
+                            text-decoration: none;
+                            display: block;
+                            margin: 0 15px;
+                            position: relative;
+
+                            &:before {
+                                content: '';
+                                position: absolute;
+                                width: 0;
+                                height: 2px;
+                                background: #fff;
+                                top: 50%;
+                                transform: translateY(-50%);
+                                transition: width 0.5s;
+                            }
+                        }
+
+                        &:hover {
+                            a {
+                                &:before {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         .social--links {
-            flex-grow: 1;
 
             ul,
             li {

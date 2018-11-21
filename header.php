@@ -13,9 +13,17 @@
     <header class="site--header">
         <div class="logo">
             <a href="<?php echo home_url();?>">
-                <?php echo bloginfo(name);?>.
+                Joel<br/>Krause.
             </a>
         </div>
+        <nav class="site--nav">
+            <?php
+                wp_nav_menu( array(
+                    'theme_location' => 'main-nav',
+                    'menu_id'        => 'main-nav',
+                ) );
+            ?>
+        </nav>
         <div class="social--links">
             <?php get_template_part('template-parts/sitewide/socialmedia');?>
         </div>
