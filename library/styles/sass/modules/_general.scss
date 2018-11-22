@@ -36,16 +36,24 @@ body {
     margin: 0 auto;
 }
 
+.wrapper {
+    &.header {
+        width: 75vw;
+    }
+}
+
 .page--heading {
     @include bg;
     min-height: 50vh;
-    padding-top: calc(20vh + 115px);
-    padding-bottom: 20vh;
     display: flex;
     align-items: center;
     text-align: center;
     color: #fff;
     position: relative;
+    max-width: 75vw;
+    margin: 0 auto;
+    border-radius: 25px;
+    background-attachment: fixed;
 
     &:after {
         content: '';

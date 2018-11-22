@@ -10,6 +10,7 @@
 
 <body>
     <div class="preloader"></div>
+    <div class="wrapper header">
     <header class="site--header">
         <div class="logo">
             <a href="<?php echo home_url();?>">
@@ -28,3 +29,4 @@
             <?php get_template_part('template-parts/sitewide/socialmedia');?>
         </div>
     </header>
+    </div>
