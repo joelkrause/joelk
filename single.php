@@ -15,7 +15,6 @@
         <h1 class="page--title">
             <?php the_title();?>
         </h1>
-        <?php echo get_avatar( get_the_author_meta('user_email'), $size = '76'); ?>
         <div class="date--posted">Posted on
             <?php the_time('F jS, Y'); ?>
         </div>
