@@ -21,6 +21,18 @@ header {
                 color: $primaryColor;
                 text-decoration: none;
             }
+
+            img,
+            svg {
+                width: 150px;
+                display: block;
+            }
+
+            svg {
+                * {
+                    fill: $primaryColor;
+                }
+            }
         }
 
         nav {
