@@ -8,6 +8,7 @@ html {
     margin: 0;
     padding: 0;
 }
+
 @import url('https://rsms.me/inter/inter-ui.css');
 
 * {
@@ -20,6 +21,46 @@ body {
     font-size: 18px;
     line-height: 1;
 }
+
+
+.preloader {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    z-index: 99;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.5s;
+
+    &.loaded {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.pace {
+    pointer-events: none;
+    user-select: none;
+    transition: all 0.15s;
+
+    &.pace-inactive {
+        opacity: 0;
+    }
+
+    .pace-progress {
+        background: $accentColor;
+        position: fixed;
+        z-index: 99999999;
+        top: 0;
+        right: 100%;
+        width: 100%;
+        height: 2px;
+    }
+}
+
 
 .container,
 .wrapper {
@@ -34,12 +75,11 @@ body {
 }
 
 .page--heading {
-    @include bg;
     min-height: 50vh;
     display: flex;
     align-items: center;
     text-align: center;
-    color: #fff;
+    color: $primaryColor;
     position: relative;
     max-width: 75vw;
     margin: 0 auto;
@@ -78,12 +118,14 @@ body {
     }
 
     .tags {
+        color: #fff;
+
         span {
             &.post--tag {
                 font-weight: 700;
                 padding: 10px;
                 display: inline-block;
-                background: #111;
+                background: $accentColor;
                 margin: 0 5px;
                 font-size: 16px;
                 border-radius: 3px;

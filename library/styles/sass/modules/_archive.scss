@@ -1,0 +1,18 @@
+.post--wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    .post--card {
+        width: 50%;
+
+        a {
+            color: $primaryColor;
+            text-decoration: none;
+
+            .title {
+                font-weight: 700;
+                font-size: 1.25em;
+            }
+        }
+    }
+}

@@ -6,8 +6,7 @@
             $post_tags = get_the_tags();
             if ($post_tags) {
               foreach($post_tags as $tag) {
-                $color = get_field('color',$tag);
-                echo '<span class="post--tag ' . $tag->slug . '" style="background-color:'.$color.';">#' . $tag->name . '</span>';
+                echo '<span class="post--tag ' . $tag->slug . '">#' . $tag->name . '</span>';
               }
             }
             ?>
@@ -15,6 +14,7 @@
         <h1 class="page--title">
             <?php the_title();?>
         </h1>
+        <?php echo get_avatar( get_the_author_meta('user_email'), $size = '76'); ?>
         <div class="date--posted">Posted on
             <?php the_time('F jS, Y'); ?>
         </div>

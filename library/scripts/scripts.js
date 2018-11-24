@@ -1,17 +1,34 @@
-jQuery(document).ready(function ($) {
+$(window).on('load', function () {
+    $('.preloader').addClass('loaded');
+})
+
+$(document).ready(function () {
+    $('a:not(a[href*="#"])').on('click', function (event) {
+        var thetarget = this.getAttribute('target')
+        if (thetarget != "_blank") {
+            var thehref = this.getAttribute('href')
+            event.preventDefault();
+            $('.preloader').removeClass('loaded');
+            setTimeout(function () {
+                window.location = thehref
+            }, 500);
+        }
+    });
+
+    // Convert SVG IMG's to Inline
     $(function () {
         activate('img[src*=".svg"]');
 
         function activate(string) {
-            jQuery(string).each(function () {
-                var $img = jQuery(this);
+            $(string).each(function () {
+                var $img = $(this);
                 var imgID = $img.attr('id');
                 var imgClass = $img.attr('class');
                 var imgURL = $img.attr('src');
 
-                jQuery.get(imgURL, function (data) {
+                $.get(imgURL, function (data) {
                     // Get the SVG tag, ignore the rest
-                    var $svg = jQuery(data).find('svg');
+                    var $svg = $(data).find('svg');
 
                     // Add replaced image's ID to the new SVG
                     if (typeof imgID !== 'undefined') {

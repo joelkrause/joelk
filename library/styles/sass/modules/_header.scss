@@ -1,7 +1,7 @@
 header {
     &.site--header {
         z-index: 1;
-        padding: 25px;
+        padding: 50px;
         color: $primaryColor;
         display: flex;
         align-items: center;
@@ -39,8 +39,9 @@ header {
             &.site--nav {
                 flex-grow: 1;
                 display: flex;
-                justify-content: center;
+                justify-content: flex-end;
                 font-weight: 500;
+                margin-right: 25px;
 
                 ul,
                 li {
