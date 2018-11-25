@@ -10,8 +10,12 @@
 
             .title {
                 font-weight: 700;
-                font-size: 28px;
+                font-size: 22px;
                 line-height: 1.25;
+
+                @include lg-up {
+                    font-size: 28px;
+                }
             }
         }
     }

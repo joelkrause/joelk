@@ -3,6 +3,12 @@ $(window).on('load', function () {
 })
 
 $(document).ready(function () {
+    $('#open--nav').on('click', function () {
+        $('.site--nav').addClass('open');
+    });
+    $('#close--nav').on('click', function () {
+        $('.site--nav').removeClass('open');
+    });
     $('a:not(a[href*="#"])').on('click', function (event) {
         var thetarget = this.getAttribute('target')
         if (thetarget != "_blank") {

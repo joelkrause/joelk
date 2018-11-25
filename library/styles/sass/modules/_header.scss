@@ -1,6 +1,5 @@
 header {
     &.site--header {
-
         width: 100%;
         top: 0;
         left: 0;
@@ -15,15 +14,7 @@ header {
         }
 
         .logo {
-            font-family: "hwt-mardell", sans-serif;
-            font-weight: 400;
-            font-size: 32px;
-
-            span {
-                font-style: italic;
-                font-weight: 100;
-                font-size: 20px;
-            }
+            flex-grow: 1;
 
             a {
                 color: $primaryColor;
@@ -32,7 +23,7 @@ header {
 
             img,
             svg {
-                width: 150px;
+                width: 125px;
                 display: block;
             }
 
@@ -51,6 +42,20 @@ header {
                 font-weight: 500;
                 margin-right: 25px;
 
+                @include md-down {
+                    position: fixed;
+                    top: 0;
+                    right: -150%;
+                    transition: right 0.5s;
+                    height: 100%;
+                    width: 100%;
+                    background-color: $primaryColor;
+                }
+
+                &.open {
+                    right: -25px;
+                }
+
                 ul,
                 li {
                     list-style: none;
@@ -63,11 +68,15 @@ header {
 
                     li {
                         a {
-                            color: $primaryColor;
+                            color: #ffffff;
                             text-decoration: none;
                             display: block;
                             margin: 0 15px;
                             position: relative;
+
+                            @include lg-up {
+                                color: $primaryColor;
+                            }
 
                             &:before {
                                 content: '';
@@ -94,6 +103,11 @@ header {
         }
 
         .social--links {
+            display: none;
+
+            @include lg-up {
+                display: block;
+            }
 
             ul,
             li {
