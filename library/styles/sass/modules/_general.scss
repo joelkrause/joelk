@@ -75,13 +75,14 @@ body {
 }
 
 .page--heading {
-    min-height: 50vh;
+    @include bg;
+    padding-top: calc(15vh + 100px);
+    padding-bottom: 15vh;
     display: flex;
     align-items: center;
     text-align: center;
     color: $primaryColor;
     position: relative;
-    max-width: 75vw;
     margin: 0 auto;
     border-radius: 25px;
     background-attachment: fixed;
@@ -99,12 +100,19 @@ body {
         transform: translateX(-50%);
     }
 
-    h1 {
-        &.page--title {
-            font-family: $mainSans;
-            font-weight: 700;
-            font-size: 42px;
-            margin: 25px 0 0;
+    .title--wrapper {
+        h1 {
+            &.page--title {
+                font-family: $mainSans;
+                font-weight: 700;
+                font-size: 42px;
+                line-height: 1.5;
+                margin: 25px 0 0;
+                background-color: #fff;
+                display: inline;
+                box-decoration-break: clone;
+                padding: 5px;
+            }
         }
     }
 
@@ -117,19 +125,20 @@ body {
         margin: 0 0 5px;
     }
 
-    .tags {
-        color: #fff;
+}
 
-        span {
-            &.post--tag {
-                font-weight: 700;
-                padding: 10px;
-                display: inline-block;
-                background: $accentColor;
-                margin: 0 5px;
-                font-size: 16px;
-                border-radius: 3px;
-            }
+.tags {
+    color: #fff;
+
+    span {
+        &.post--tag {
+            font-weight: 700;
+            padding: 10px;
+            display: inline-block;
+            background: $accentColor;
+            margin: 0 5px;
+            font-size: 16px;
+            border-radius: 3px;
         }
     }
 }

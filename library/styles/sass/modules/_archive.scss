@@ -1,9 +1,8 @@
 .post--wrapper {
-    display: flex;
-    flex-wrap: wrap;
-
     .post--card {
-        width: 50%;
+        padding: 0 0 25px;
+        margin: 0 0 25px;
+        border-bottom: 1px solid #ececec;
 
         a {
             color: $primaryColor;
@@ -11,7 +10,8 @@
 
             .title {
                 font-weight: 700;
-                font-size: 1.25em;
+                font-size: 28px;
+                line-height: 1.25;
             }
         }
     }

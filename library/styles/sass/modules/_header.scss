@@ -1,10 +1,18 @@
 header {
     &.site--header {
+
+        width: 100%;
+        top: 0;
+        left: 0;
         z-index: 1;
-        padding: 50px;
+        padding: 25px;
         color: $primaryColor;
         display: flex;
         align-items: center;
+
+        .single & {
+            position: absolute;
+        }
 
         .logo {
             font-family: "hwt-mardell", sans-serif;
