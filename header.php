@@ -5,10 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style type="text/css">
-        <?php include("library/styles/css/main.css");
-        ?>
-    </style>
     <?php wp_head();?>
 </head>
 
