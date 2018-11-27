@@ -9,6 +9,7 @@ html {
     padding: 0;
 }
 
+@import url("https://use.typekit.net/pus7zdd.css");
 @import url('https://rsms.me/inter/inter-ui.css');
 
 * {
@@ -145,7 +146,7 @@ button {
                 padding: 5px;
 
                 @include lg-up {
-                    font-size: 42px;
+                    font-size: 52px;
                 }
             }
         }
