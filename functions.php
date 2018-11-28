@@ -39,7 +39,7 @@ if ( ! function_exists( 'joelkrause' ) ) :
 	add_action( 'after_setup_theme', 'joelkrause' );
 
 function joelkrause_styles() {
-	wp_enqueue_style( 'main', get_stylesheet_directory_uri() .'/library/styles/css/main.css', array(), filemtime(get_stylesheet_directory() .'/library/styles/css/main.css'), 'all' );
+	// wp_enqueue_style( 'main', get_stylesheet_directory_uri() .'/library/styles/css/main.css', array(), filemtime(get_stylesheet_directory() .'/library/styles/css/main.css'), 'all' );
 	
 	wp_enqueue_script('fontawesome', 'https://use.fontawesome.com/releases/v5.0.7/js/all.js');
 	wp_deregister_script('jquery');
