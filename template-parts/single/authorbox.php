@@ -9,7 +9,9 @@
             </div>
             <div class="content">
                 <?php the_author_meta('description', 1); ?>
-                <?php get_template_part('template-parts/sitewide/socialmedia');?>
+                <div class="social--links">
+                    <?php get_template_part('template-parts/sitewide/socialmedia');?>
+                </div>
             </div>
         </div>
     </div>

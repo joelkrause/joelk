@@ -101,33 +101,5 @@ header {
                 }
             }
         }
-
-        .social--links {
-            display: none;
-
-            @include lg-up {
-                display: block;
-            }
-
-            ul,
-            li {
-                list-style: none;
-                padding: 0;
-                margin: 0;
-            }
-
-            ul {
-                display: flex;
-                justify-content: flex-end;
-
-                li {
-                    a {
-                        color: $primaryColor;
-                        font-size: 20px;
-                        padding: 5px;
-                    }
-                }
-            }
-        }
     }
 }

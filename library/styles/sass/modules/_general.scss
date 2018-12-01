@@ -19,8 +19,12 @@ html {
 body {
     font-family: $mainSans;
     font-weight: 300;
-    font-size: 1.5em;
+    font-size: 1.25em;
     line-height: 1;
+
+    @include lg-up {
+        font-size: 1.5em;
+    }
 }
 
 button {
@@ -183,6 +187,44 @@ button {
 
             @include lg-up {
                 font-size: 16px;
+            }
+        }
+    }
+}
+
+.social--links {
+    &.header {
+        display: none;
+
+        @include lg-up {
+            display: block;
+        }
+
+        ul {
+            justify-content: flex-end;
+        }
+    }
+
+    &:not(.header) {
+        padding: 25px 0 0;
+    }
+
+    ul,
+    li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul {
+        display: flex;
+        justify-content: flex-start;
+
+        li {
+            a {
+                color: $primaryColor;
+                font-size: 20px;
+                padding: 5px;
             }
         }
     }

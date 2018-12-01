@@ -35,7 +35,7 @@
                 ) );
             ?>
         </nav>
-        <div class="social--links">
+        <div class="social--links header">
             <?php get_template_part('template-parts/sitewide/socialmedia');?>
         </div>
     </header>

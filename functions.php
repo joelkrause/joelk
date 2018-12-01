@@ -45,6 +45,7 @@ function joelkrause_styles() {
 	wp_deregister_script('jquery');
 	wp_enqueue_script('jquery', 'https://code.jquery.com/jquery-latest.min.js', array(), null, true);
 	wp_enqueue_script( 'pace', get_stylesheet_directory_uri() .'/library/scripts/pace.min.js', array(), filemtime(get_stylesheet_directory() .'/library/scripts/pace.min.js'), 'all' );
+	wp_enqueue_script( 'scripts', get_stylesheet_directory_uri() .'/library/scripts/scripts.js', array(), filemtime(get_stylesheet_directory() .'/library/scripts/scripts.js'), 'all' );
 }
 add_action( 'wp_enqueue_scripts', 'joelkrause_styles' );
 
@@ -54,154 +55,62 @@ if( function_exists('acf_add_options_page') ) {
 	
 }
 
-// HTML Compression
-class WP_HTML_Compression
-{
-    // Settings
-    protected $compress_css = true;
-    protected $compress_js = true;
-    protected $info_comment = true;
-    protected $remove_comments = true;
-
-    // Variables
-    protected $html;
-    public function __construct($html)
-    {
-   	 if (!empty($html))
-   	 {
-   		 $this->parseHTML($html);
-   	 }
-    }
-    public function __toString()
-    {
-   	 return $this->html;
-    }
-    protected function bottomComment($raw, $compressed)
-    {
-   	 $raw = strlen($raw);
-   	 $compressed = strlen($compressed);
-   	 
-   	 $savings = ($raw-$compressed) / $raw * 100;
-   	 
-   	 $savings = round($savings, 2);
-   	 
-   	 return '<!--HTML compressed, size saved '.$savings.'%. From '.$raw.' bytes, now '.$compressed.' bytes-->';
-    }
-    protected function minifyHTML($html)
-    {
-   	 $pattern = '/<(?<script>script).*?<\/script\s*>|<(?<style>style).*?<\/style\s*>|<!(?<comment>--).*?-->|<(?<tag>[\/\w.:-]*)(?:".*?"|\'.*?\'|[^\'">]+)*>|(?<text>((<[^!\/\w.:-])?[^<]*)+)|/si';
-   	 preg_match_all($pattern, $html, $matches, PREG_SET_ORDER);
-   	 $overriding = false;
-   	 $raw_tag = false;
-   	 // Variable reused for output
-   	 $html = '';
-   	 foreach ($matches as $token)
-   	 {
-   		 $tag = (isset($token['tag'])) ? strtolower($token['tag']) : null;
-   		 
-   		 $content = $token[0];
-   		 
-   		 if (is_null($tag))
-   		 {
-   			 if ( !empty($token['script']) )
-   			 {
-   				 $strip = $this->compress_js;
-   			 }
-   			 else if ( !empty($token['style']) )
-   			 {
-   				 $strip = $this->compress_css;
-   			 }
-   			 else if ($content == '<!--wp-html-compression no compression-->')
-   			 {
-   				 $overriding = !$overriding;
-   				 
-   				 // Don't print the comment
-   				 continue;
-   			 }
-   			 else if ($this->remove_comments)
-   			 {
-   				 if (!$overriding && $raw_tag != 'textarea')
-   				 {
-   					 // Remove any HTML comments, except MSIE conditional comments
-   					 $content = preg_replace('/<!--(?!\s*(?:\[if [^\]]+]|<!|>))(?:(?!-->).)*-->/s', '', $content);
-   				 }
-   			 }
-   		 }
-   		 else
-   		 {
-   			 if ($tag == 'pre' || $tag == 'textarea')
-   			 {
-   				 $raw_tag = $tag;
-   			 }
-   			 else if ($tag == '/pre' || $tag == '/textarea')
-   			 {
-   				 $raw_tag = false;
-   			 }
-   			 else
-   			 {
-   				 if ($raw_tag || $overriding)
-   				 {
-   					 $strip = false;
-   				 }
-   				 else
-   				 {
-   					 $strip = true;
-   					 
-   					 // Remove any empty attributes, except:
-   					 // action, alt, content, src
-   					 $content = preg_replace('/(\s+)(\w++(?<!\baction|\balt|\bcontent|\bsrc)="")/', '$1', $content);
-   					 
-   					 // Remove any space before the end of self-closing XHTML tags
-   					 // JavaScript excluded
-   					 $content = str_replace(' />', '/>', $content);
-   				 }
-   			 }
-   		 }
-   		 
-   		 if ($strip)
-   		 {
-   			 $content = $this->removeWhiteSpace($content);
-   		 }
-   		 
-   		 $html .= $content;
-   	 }
-   	 
-   	 return $html;
-    }
-   	 
-    public function parseHTML($html)
-    {
-   	 $this->html = $this->minifyHTML($html);
-   	 
-   	 if ($this->info_comment)
-   	 {
-   		 $this->html .= "\n" . $this->bottomComment($html, $this->html);
-   	 }
-    }
-    
-    protected function removeWhiteSpace($str)
-    {
-   	 $str = str_replace("\t", ' ', $str);
-   	 $str = str_replace("\n",  '', $str);
-   	 $str = str_replace("\r",  '', $str);
-   	 
-   	 while (stristr($str, '  '))
-   	 {
-   		 $str = str_replace('  ', ' ', $str);
-   	 }
-   	 
-   	 return $str;
-    }
+// ajax load more
+function misha_my_load_more_scripts() {
+ 
+	global $wp_query; 
+ 
+	// In most cases it is already included on the page and this line can be removed
+	wp_enqueue_script('jquery');
+ 
+	// register our main script but do not enqueue it yet
+	wp_register_script( 'my_loadmore', get_stylesheet_directory_uri() . '/library/scripts/myloadmore.js', array('jquery') );
+ 
+	// now the most interesting part
+	// we have to pass parameters to myloadmore.js script but we can get the parameters values only in PHP
+	// you can define variables directly in your HTML but I decided that the most proper way is wp_localize_script()
+	wp_localize_script( 'my_loadmore', 'misha_loadmore_params', array(
+		'ajaxurl' => site_url() . '/wp-admin/admin-ajax.php', // WordPress AJAX
+		'posts' => json_encode( $wp_query->query_vars ), // everything about your loop is here
+		'current_page' => get_query_var( 'paged' ) ? get_query_var('paged') : 1,
+		'max_page' => $wp_query->max_num_pages
+	) );
+ 
+ 	wp_enqueue_script( 'my_loadmore' );
 }
+ 
+add_action( 'wp_enqueue_scripts', 'misha_my_load_more_scripts' );
 
-function wp_html_compression_finish($html)
-{
-    return new WP_HTML_Compression($html);
+function misha_loadmore_ajax_handler(){
+ 
+	// prepare our arguments for the query
+	$args = json_decode( stripslashes( $_POST['query'] ), true );
+	$args['paged'] = $_POST['page'] + 1; // we need next page to be loaded
+	$args['post_status'] = 'publish';
+ 
+	// it is always better to use WP_Query but not here
+	query_posts( $args );
+ 
+	if( have_posts() ) :
+ 
+		// run the loop
+		while( have_posts() ): the_post();
+ 
+			// look into your theme code how the posts are inserted, but you can use your own HTML of course
+			// do you remember? - my example is adapted for Twenty Seventeen theme
+			get_template_part( 'template-parts/post-loop');
+			// for the test purposes comment the line above and uncomment the below one
+			// the_title();
+ 
+ 
+		endwhile;
+ 
+	endif;
+	die; // here we exit the script and even no wp_reset_query() required!
 }
-
-function wp_html_compression_start()
-{
-    ob_start('wp_html_compression_finish');
-}
-add_action('get_header', 'wp_html_compression_start');
+ 
+ 
+ 
+add_action('wp_ajax_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_{action}
+add_action('wp_ajax_nopriv_loadmore', 'misha_loadmore_ajax_handler'); // wp_ajax_nopriv_{action}
 ?>
