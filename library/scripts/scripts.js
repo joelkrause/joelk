@@ -3,8 +3,6 @@ $(window).on('load', function () {
 })
 
 $(document).ready(function () {
-    new WOW().init();
-
     $('#open--nav').on('click', function () {
         $('.site--nav').addClass('open');
     });

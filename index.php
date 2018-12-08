@@ -1,5 +1,10 @@
 <?php get_header();?>
 <div class="container">
+    <div class="home--intro">
+        <strong>Hey! &#x1F44B; I'm Joel.</strong>
+        <p>I'm a web developer at Studio Chriate where I code pixel perfect WordPress websites.</p>
+    </div>
+    <div class="latest--posts">Latest Posts</div>
     <div class="post--wrapper">
         <?php if ( have_posts() ) : while ( have_posts() ) : the_post();
 			get_template_part( 'template-parts/post-loop');

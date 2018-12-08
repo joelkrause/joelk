@@ -23,7 +23,7 @@ header {
 
             img,
             svg {
-                width: 150px;
+                width: 125px;
                 display: block;
             }
 
@@ -73,6 +73,8 @@ header {
                             display: block;
                             margin: 0 15px;
                             position: relative;
+                            font-size: 18px;
+                            font-weight: 400;
 
                             @include lg-up {
                                 color: $primaryColor;

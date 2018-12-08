@@ -18,13 +18,9 @@ html {
 
 body {
     font-family: $mainSans;
-    font-weight: 300;
-    font-size: 1.25em;
+    font-weight: 400;
+    font-size: 18px;
     line-height: 1;
-
-    @include lg-up {
-        font-size: 1.5em;
-    }
 }
 
 button {
@@ -167,10 +163,10 @@ button {
                 background-color: #fff;
                 display: inline;
                 box-decoration-break: clone;
-                padding: 0 20px 5px 20px;
+                padding: 3px 10px 3px 10px;
 
                 @include lg-up {
-                    font-size: 52px;
+                    font-size: 32px;
                 }
             }
         }
@@ -188,6 +184,13 @@ button {
 
     .date--posted {
         margin: 0 0 5px;
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .author {
+        font-size: 18px;
+        font-weight: 400;
     }
 
 }
